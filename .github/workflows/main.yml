@@ -17,14 +17,14 @@ jobs:
         fail-on-isort: false #true
 
     #   #L outil isort facilite l'integration continue, il ne bloc pas le commit, il corrige automatique, on peut commenter les lignes du bas mais si erreur il faut corriger sinon commit bloquer
-    # - name: commit isort changes
-    #   run: |
-    #     git config --local user.email "action@github.com"
-    #     git config --local user.name "GitHub Action"
-    #     git add -A && git diff-index --cached --quiet HEAD || git commit -m 'isort'
+    - name: commit isort changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A && git diff-index --cached --quiet HEAD || git commit -m 'isort'
 
-    # - name: push isort changes
-    #   uses: ad-m/github-push-action@v0.5.0
-    #   with:
-    #     github_token: ${{ secrets.GH_ACCESS_TOKEN_TEST }}
-    #     branch: ${{ github.ref }}
+    - name: push isort changes
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        github_token: ${{ secrets.GH_ACCESS_TOKEN_TEST }}
+        branch: ${{ github.ref }}
